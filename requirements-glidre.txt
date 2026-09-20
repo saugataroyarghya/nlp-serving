@@ -1,0 +1,7 @@
+# GLiDRE intentionally lives in a separate environment/image. Its upstream
+# package pins older GLiNER and Transformers versions that conflict with the
+# GLiNER Decoder and RelEx services in this repository.
+bentoml==1.4.39
+glidre @ git+https://github.com/cea-list-lasti/glidre.git@5c3bee6698b4365224576459f9c8d48c9a6d3b6d
+protobuf>=7.36.2
+sentencepiece>=0.2.2

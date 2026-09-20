@@ -5,12 +5,38 @@ build/
 dist/
 wheels/
 *.egg-info
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
 
 # Virtual environments
-.venv
+.venv/
+.venv-*/
+:memory:.ses
 
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
 
-#AI Agents
+# Local model and serving caches
+.hf/
+.huggingface/
+.bentoml/
+bentoml-store/
+*.safetensors
+*.onnx
+*.pt
+*.pth
+
+# OS and editor files
+.DS_Store
+.idea/
+.vscode/
+
+# AI agents
 .claude/
 .agents/
-
+.codex/

@@ -1,1 +1,4 @@
 gliner2[local]
+gliner==0.2.29
+laya==0.3.4
+keybert==0.9.0

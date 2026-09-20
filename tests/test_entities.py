@@ -1,15 +1,3 @@
-import pytest
-from starlette.testclient import TestClient
-
-from services.entities import GliNER2Service
-
-
-@pytest.fixture(scope="session")
-def client():
-    with TestClient(GliNER2Service.to_asgi()) as c:
-        yield c
-
-
 def test_extract_entities(client):
     r = client.post(
         "/extract_entities",
@@ -66,3 +54,18 @@ def test_extract_relations(client):
     assert r.status_code == 200
     relations = r.json()["relation_extraction"]
     assert relations["works_for"] == [["John", "Apple Inc."]]
+
+
+def test_swagger_groups_endpoints_by_model(client):
+    specification = client.get("/docs.json").json()
+
+    assert [tag["name"] for tag in specification["tags"][:3]] == [
+        "GLiNER",
+        "Laya",
+        "KeyBERT",
+    ]
+    assert specification["paths"]["/extract_entities"]["post"]["tags"] == [
+        "GLiNER"
+    ]
+    assert specification["paths"]["/decide"]["post"]["tags"] == ["Laya"]
+    assert specification["paths"]["/keywords"]["post"]["tags"] == ["KeyBERT"]
