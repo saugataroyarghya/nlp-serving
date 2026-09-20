@@ -258,3 +258,12 @@ uv run pytest -q tests/test_entities.py tests/test_decide.py tests/test_keywords
 
 The tests use one shared BentoML application so the three compatible models are
 loaded only once for the test session.
+
+## License and attribution
+
+This project is licensed under the [Apache License 2.0](LICENSE).
+
+The models and libraries used here remain under their respective upstream
+licenses. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for model links,
+license attribution, and the GLiDRE source-package licensing caveat. Model
+weights are downloaded at runtime and are not included in this repository.
